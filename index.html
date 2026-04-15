@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaskFlow - Lista de Tarefas</title>
+  <meta
+    name="description"
+    content="Aplicação de lista de tarefas com prioridade, filtros, paginação e persistência local."
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="sky">
+    <div class="sun"></div>
+    <div class="moon"></div>
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="stars"></div>
+  </div>
+
+  <main class="app">
+    <section class="card">
+      <header class="app-header">
+        <div>
+          <p class="eyebrow">Organização pessoal</p>
+          <h1>TaskFlow</h1>
+          <p class="subtitle">
+            Gerencie suas tarefas com prioridade, prazo e praticidade.
+          </p>
+        </div>
+      </header>
+
+      <form id="taskForm" class="task-form" autocomplete="off">
+        <div class="field-group">
+          <label for="taskInput">Tarefa</label>
+          <input
+            type="text"
+            id="taskInput"
+            name="taskInput"
+            placeholder="Digite sua tarefa"
+            maxlength="100"
+            required
+          />
+        </div>
+
+        <div class="form-grid">
+          <div class="field-group">
+            <label for="prioritySelect">Prioridade</label>
+            <select id="prioritySelect" name="prioritySelect">
+              <option value="alta">Alta</option>
+              <option value="media">Média</option>
+              <option value="baixa">Baixa</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label for="taskDate">Data da tarefa</label>
+            <input type="date" id="taskDate" name="taskDate" required />
+          </div>
+
+          <div class="field-group">
+            <label for="taskTime">Hora da tarefa</label>
+            <input type="time" id="taskTime" name="taskTime" required />
+          </div>
+
+          <button type="submit" class="btn btn-primary">Adicionar</button>
+        </div>
+
+        <p id="feedbackMessage" class="feedback" aria-live="polite"></p>
+      </form>
+
+      <section class="toolbar" aria-label="Filtros e ações">
+        <div class="filters" role="group" aria-label="Filtrar tarefas">
+          <button type="button" class="filter-btn active" data-filter="todas">Todas</button>
+          <button type="button" class="filter-btn" data-filter="pendentes">Pendentes</button>
+          <button type="button" class="filter-btn" data-filter="concluidas">Concluídas</button>
+        </div>
+
+        <button type="button" id="clearCompletedBtn" class="btn btn-secondary">
+          Limpar concluídas
+        </button>
+      </section>
+
+      <section class="summary" aria-label="Resumo das tarefas">
+        <div class="summary-item">
+          <span class="summary-label">Total</span>
+          <strong id="totalTasks">0</strong>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label">Pendentes</span>
+          <strong id="pendingTasks">0</strong>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label">Concluídas</span>
+          <strong id="completedTasks">0</strong>
+        </div>
+      </section>
+
+      <section class="task-section">
+        <ul id="taskList" class="task-list" aria-label="Lista de tarefas"></ul>
+
+        <div id="emptyState" class="empty-state">
+          <p>Nenhuma tarefa cadastrada no momento.</p>
+        </div>
+      </section>
+
+      <section class="pagination-section" aria-label="Paginação das tarefas">
+        <div class="pagination-info">
+          <span id="paginationInfo">Mostrando 0 de 0 tarefas</span>
+        </div>
+
+        <div class="pagination-controls">
+          <button type="button" id="prevPageBtn" class="btn btn-secondary">Anterior</button>
+          <span id="pageIndicator" class="page-indicator">Página 1</span>
+          <button type="button" id="nextPageBtn" class="btn btn-secondary">Próxima</button>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
